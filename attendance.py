@@ -7,13 +7,14 @@ import pandas as pd
 import datetime
 import time
 from tkinter import messagebox
+from tkinter import filedialog
 
 window = tk.Tk()
 
-window.title("Attendance System")
 
 
-window.configure(background='pink')
+
+window.configure(background='white')
 
 
 window.grid_rowconfigure(0, weight=1)
@@ -23,46 +24,38 @@ x_cord = 75;
 y_cord = 20;
 checker=0;
 
-message = tk.Label(window, text="DIT UNIVERSITY" ,bg="white"  ,fg="black"  ,width=20  ,height=2,font=('Times New Roman', 25, 'bold')) 
-message.place(x=1150, y=760)
-
-message = tk.Label(window, text="ATTENDANCE MANAGEMENT PORTAL" ,bg="pink"  ,fg="black"  ,width=40  ,height=1,font=('Times New Roman', 35, 'bold underline')) 
-message.place(x=200, y=20)
-
-lbl = tk.Label(window, text="Enter Your College ID",width=20  ,height=2  ,fg="black"  ,bg="Pink" ,font=('Times New Roman', 25, ' bold ') ) 
-lbl.place(x=200-x_cord, y=200-y_cord)
+def browse_file():
+    file_path = filedialog.askopenfilename()
+    return file_path
 
 
-txt = tk.Entry(window,width=30,bg="white" ,fg="blue",font=('Times New Roman', 15, ' bold '))
-txt.place(x=250-x_cord, y=300-y_cord)
 
-lbl2 = tk.Label(window, text="Enter Your Name",width=20  ,fg="black"  ,bg="pink"    ,height=2 ,font=('Times New Roman', 25, ' bold ')) 
-lbl2.place(x=600-x_cord, y=200-y_cord)
 
-txt2 = tk.Entry(window,width=30  ,bg="white"  ,fg="blue",font=('Times New Roman', 15, ' bold ')  )
-txt2.place(x=650-x_cord, y=300-y_cord)
+txt = tk.Entry(window,width=36,bg="white" ,fg="blue",font=('Times New Roman', 15, ' bold '))
+txt.place(x=120-x_cord, y=250-y_cord)
 
-lbl3 = tk.Label(window, text="NOTIFICATION",width=20  ,fg="black"  ,bg="pink"  ,height=2 ,font=('Times New Roman', 25, ' bold ')) 
-lbl3.place(x=1060-x_cord, y=200-y_cord)
+
+
+txt2 = tk.Entry(window,width=36  ,bg="white"  ,fg="blue",font=('Times New Roman', 15, ' bold ')  )
+txt2.place(x=120-x_cord, y=370-y_cord)
+
+
+
+
+
+
+
 
 message = tk.Label(window, text="" ,bg="white"  ,fg="blue"  ,width=30  ,height=1, activebackground = "white" ,font=('Times New Roman', 15, ' bold ')) 
 message.place(x=1075-x_cord, y=300-y_cord)
 
-lbl3 = tk.Label(window, text="ATTENDANCE",width=20  ,fg="white"  ,bg="lightgreen"  ,height=2 ,font=('Times New Roman', 30, ' bold ')) 
-lbl3.place(x=120, y=570-y_cord)
+
 
 
 message2 = tk.Label(window, text="" ,fg="red"   ,bg="yellow",activeforeground = "green",width=60  ,height=4  ,font=('times', 15, ' bold ')) 
 message2.place(x=700, y=570-y_cord)
 
-lbl4 = tk.Label(window, text="STEP 1",width=20  ,fg="green"  ,bg="pink"  ,height=2 ,font=('Times New Roman', 20, ' bold '))
-lbl4.place(x=240-x_cord, y=375-y_cord)
 
-lbl5 = tk.Label(window, text="STEP 2",width=20  ,fg="green"  ,bg="pink"  ,height=2 ,font=('Times New Roman', 20, ' bold ')) 
-lbl5.place(x=645-x_cord, y=375-y_cord)
-
-lbl6 = tk.Label(window, text="STEP 3",width=20  ,fg="green"  ,bg="pink"  ,height=2 ,font=('Times New Roman', 20, ' bold ')) 
-lbl6.place(x=1100-x_cord, y=362-y_cord)
  
 def clear1():
     txt.delete(0, 'end')    
@@ -230,13 +223,11 @@ def TrackImages():
     tk.messagebox.showinfo('Completed','Congratulations ! Your attendance has been marked successfully for the day!!')
     
 def quit_window():
-   MsgBox = tk.messagebox.askquestion ('Exit Application','Are you sure you want to exit the application',icon = 'warning')
-   if MsgBox == 'yes':
-       tk.messagebox.showinfo("Greetings", "Thank You very much for using our software. Have a nice day ahead!!")
-       window.destroy()
-    
-takeImg = tk.Button(window, text="IMAGE CAPTURE BUTTON", command=TakeImages  ,fg="white"  ,bg="blue"  ,width=25  ,height=2, activebackground = "pink" ,font=('Times New Roman', 15, ' bold '))
-takeImg.place(x=245-x_cord, y=425-y_cord)
+   window.destroy
+
+
+takeImg = tk.Button(window, text="CAPTURE IMAGES", command=TakeImages  ,fg="black"  ,bg="#f0f3f9" ,width=25  ,height=-1, font=('Sitka Text Semibold', 18, ' bold '))
+takeImg.place(x=120-x_cord, y=530-y_cord)
 trainImg = tk.Button(window, text="MODEL TRAINING BUTTON", command=TrainImages  ,fg="white"  ,bg="blue"  ,width=25  ,height=2, activebackground = "pink" ,font=('Times New Roman', 15, ' bold '))
 trainImg.place(x=645-x_cord, y=425-y_cord)
 trackImg = tk.Button(window, text="ATTENDANCE MARKING BUTTON", command=TrackImages  ,fg="white"  ,bg="red"  ,width=30  ,height=3, activebackground = "pink" ,font=('Times New Roman', 15, ' bold '))
